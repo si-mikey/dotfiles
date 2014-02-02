@@ -127,6 +127,7 @@ alias ....="cd ../../"
 alias ......="cd ../../../"
 alias vi="vim $@"
 alias ack="ack-grep $@"
+alias cls='clear'
 
 
 #custom *nix functions
