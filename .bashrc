@@ -119,6 +119,7 @@ alias gits="git status"
 alias gitd="git diff $@"
 alias gitc="git commit $@"
 alias gitp="git push $@"
+alias gitb="git branch $@"
 alias gitrmfilter="git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch $1' --prune-empty --tag-name-filter cat -- --all"
 
 #non git shortcuts
@@ -127,8 +128,11 @@ alias ....="cd ../../"
 alias ......="cd ../../../"
 alias vi="vim $@"
 alias ack="ack-grep $@"
-alias cls='clear'
+alias rmtorrent="rm ~/Downloads/*.torrent"
 
 
 #custom *nix functions
 echoerror(){ echo "$@" >&2; }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
