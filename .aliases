@@ -18,5 +18,6 @@ alias ack="ack-grep $@"
 alias rmtorrent="rm ~/Downloads/*.torrent"
 
 
+
 #custom *nix functions
 echoerror(){ echo "$@" >&2; }
