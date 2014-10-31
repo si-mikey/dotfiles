@@ -61,7 +61,10 @@ set relativenumber 	"here be zero
 set expandtab       "tabs to spaces
 set tabstop=2
 set shiftwidth=2
-
+set foldmethod=syntax "fold lines of code
+" remap q to Q
+nnoremap Q q
+nnoremap q <Nop>
 
 " Source a global configuration file if available
 "if filereadable("/etc/vim/vimrc.local")
