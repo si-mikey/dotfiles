@@ -36,9 +36,12 @@ execute pathogen#infect()
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-if has("autocmd")
-  "filetype plugin indent on
-endif
+filetype plugin indent on
+
+"code completion
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -55,16 +58,52 @@ set noswapfile		" no swaps
 set nobackup		"
 set nowritebackup	"
 set backspace=2		" backspace delete
+" set colorcolumn=80 
+set t_Co=256 "256 colors in terminal
 
 "settings i like
 set relativenumber 	"here be zero
 set expandtab       "tabs to spaces
 set tabstop=2
 set shiftwidth=2
-set foldmethod=syntax "fold lines of code
+set foldmethod=syntax
+
+" auto detect rare file extensions
+au BufNewFile,BufRead *.jq set filetype=javascript
+au BufNewFile,BufRead *.jade set filetype=javascript
+au BufNewFile,BufRead *.json set filetype=javascript
+
+
 " remap q to Q
 nnoremap Q q
 nnoremap q <Nop>
+
+au FileType javascript call JavaScriptFold()
+
+
+"Show motion for words:  
+nnoremap <silent> w w:call g:Highw()<CR>:call g:HighW()<CR>  
+nnoremap <silent> W W:call g:Highw()<CR>:call g:HighW()<CR>  
+"nnoremap <silent> b b:call g:Highb()<CR>:call g:HighB()<CR>  
+nnoremap <silent> B B:call g:Highb()<CR>:call g:HighB()<CR>  
+nnoremap <silent> e e:call g:Highe()<CR>:call g:HighE()<CR>  
+nnoremap <silent> E E:call g:Highe()<CR>:call g:HighE()<CR>  
+
+"Show motion for chars:  
+nnoremap f :call g:FindChar( 'f', "forward" )<CR>  
+nnoremap t :call g:FindChar( 't', "forward" )<CR>  
+nnoremap F :call g:FindChar( 'F', "backward" )<CR>  
+nnoremap T :call g:FindChar( 'T', "backward" )<CR>  
+nnoremap ; :call g:SeekRepeat()<CR>:call g:HighRepeat()<CR>
+nnoremap , :call g:SeekReverse()<CR>:call g:HighReverse()<CR>
+
+
+
+" power line extenson
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+set laststatus=2
+let g:bufferline_echo = 0
 
 " Source a global configuration file if available
 "if filereadable("/etc/vim/vimrc.local")
