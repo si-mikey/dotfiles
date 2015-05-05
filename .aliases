@@ -17,7 +17,7 @@ alias ......="cd ../../../"
 alias vi="vim $@"
 alias ack="ack-grep $@"
 alias rmtorrent="rm ~/Downloads/*.torrent"
-
+alias cls="clear"
 
 
 #custom *nix functions
