@@ -129,10 +129,20 @@ alias ......="cd ../../../"
 alias vi="vim $@"
 alias ack="ack-grep $@"
 alias rmtorrent="rm ~/Downloads/*.torrent"
-
+source "/home/mikey/.aliases"
+alias is_on="ps aux | grep $@"
 
 #custom *nix functions
 echoerror(){ echo "$@" >&2; }
 
+#custom scripts
+
+#turn off screensaver in ubuntu
+xset -dpms
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+export NVM_DIR="/home/mikey/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

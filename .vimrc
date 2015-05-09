@@ -63,8 +63,8 @@ set t_Co=256 "256 colors in terminal
 
 "settings i like
 set relativenumber 	"here be zero
-set expandtab       "tabs to spaces
 set tabstop=2
+set expandtab       "tabs to spaces
 set shiftwidth=2
 set foldmethod=syntax
 
@@ -82,21 +82,37 @@ au FileType javascript call JavaScriptFold()
 
 
 "Show motion for words:  
-nnoremap <silent> w w:call g:Highw()<CR>:call g:HighW()<CR>  
-nnoremap <silent> W W:call g:Highw()<CR>:call g:HighW()<CR>  
-"nnoremap <silent> b b:call g:Highb()<CR>:call g:HighB()<CR>  
-nnoremap <silent> B B:call g:Highb()<CR>:call g:HighB()<CR>  
-nnoremap <silent> e e:call g:Highe()<CR>:call g:HighE()<CR>  
-nnoremap <silent> E E:call g:Highe()<CR>:call g:HighE()<CR>  
+"nnoremap <silent> w w:call g:Highw()<CR>:call g:HighW()<CR>  
+"nnoremap <silent> W W:call g:Highw()<CR>:call g:HighW()<CR>  
+""nnoremap <silent> b b:call g:Highb()<CR>:call g:HighB()<CR>  
+"nnoremap <silent> B B:call g:Highb()<CR>:call g:HighB()<CR>  
+"nnoremap <silent> e e:call g:Highe()<CR>:call g:HighE()<CR>  
+"nnoremap <silent> E E:call g:Highe()<CR>:call g:HighE()<CR>  
+"
+""Show motion for chars:  
+"nnoremap f :call g:FindChar( 'f', "forward" )<CR>  
+"nnoremap t :call g:FindChar( 't', "forward" )<CR>  
+"nnoremap F :call g:FindChar( 'F', "backward" )<CR>  
+"nnoremap T :call g:FindChar( 'T', "backward" )<CR>  
+"nnoremap ; :call g:SeekRepeat()<CR>:call g:HighRepeat()<CR>
+"nnoremap , :call g:SeekReverse()<CR>:call g:HighReverse()<CR>
+"
 
-"Show motion for chars:  
-nnoremap f :call g:FindChar( 'f', "forward" )<CR>  
-nnoremap t :call g:FindChar( 't', "forward" )<CR>  
-nnoremap F :call g:FindChar( 'F', "backward" )<CR>  
-nnoremap T :call g:FindChar( 'T', "backward" )<CR>  
-nnoremap ; :call g:SeekRepeat()<CR>:call g:HighRepeat()<CR>
-nnoremap , :call g:SeekReverse()<CR>:call g:HighReverse()<CR>
+"Utilsnips settings
 
+" Track the engine.
+"Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 
 " power line extenson
