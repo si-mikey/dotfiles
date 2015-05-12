@@ -129,7 +129,7 @@ alias ......="cd ../../../"
 alias vi="vim $@"
 alias ack="ack-grep $@"
 alias rmtorrent="rm ~/Downloads/*.torrent"
-source "/home/mikey/.aliases"
+source ~/.aliases
 alias is_on="ps aux | grep $@"
 
 #custom *nix functions
