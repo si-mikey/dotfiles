@@ -133,7 +133,7 @@ source ~/.aliases
 alias is_on="ps aux | grep $@"
 
 #custom *nix functions
-echoerror(){ echo "$@" >&2; }
+echoerror(){ echo "$@" 1>&2; }
 
 #custom scripts
 
