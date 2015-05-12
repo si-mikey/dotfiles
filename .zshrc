@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # npm global directory
 export PATH=~/.npm/bin:$PATH
 export NPM_CONFIG_PREFIX=~/.npm
-export NVM_DIR="/home/mikey/.nvm"
+export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
