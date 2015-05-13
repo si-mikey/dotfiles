@@ -86,3 +86,4 @@ export NVM_DIR=~/.nvm
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # source my aliases
   . ~/.aliases
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
