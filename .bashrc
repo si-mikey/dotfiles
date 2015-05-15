@@ -132,10 +132,11 @@ export NVM_DIR=~/.nvm
 # Go version manager
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-# ruby version manager
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-
+if ! hash rock 2>/dev/null; then
+  # ruby version manager
+  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+fi
 #=================== Run time management ====================#
 
 
