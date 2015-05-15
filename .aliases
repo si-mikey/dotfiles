@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 #custom settings for git
 alias show="nautilus $@"
 alias gits="git status"
@@ -20,7 +18,5 @@ alias rmtorrent="rm ~/Downloads/*.torrent"
 alias me="cd ~"
 alias cls="clear"
 alias tunes="ncmpcpp"
+alias is_on="ps aux | grep $@"
 
-
-#custom *nix functions
-echoerror(){ echo "$@" >&2; }

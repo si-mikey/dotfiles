@@ -7,3 +7,7 @@ pathmunge () {
     fi
   fi
 }
+
+echoerror(){ echo "$@" 1>&2; }
+
+

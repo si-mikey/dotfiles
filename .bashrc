@@ -113,29 +113,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#custom si-mikey settings for git
-alias show="nautilus $@"
-alias gits="git status"
-alias gitd="git diff $@"
-alias gitc="git commit $@"
-alias gitp="git push $@"
-alias gitb="git branch $@"
-alias gitrmfilter="git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch $1' --prune-empty --tag-name-filter cat -- --all"
-
-#non git shortcuts
-alias ..="cd .."
-alias ....="cd ../../"
-alias ......="cd ../../../"
-alias vi="vim $@"
-alias ack="ack-grep $@"
-alias rmtorrent="rm ~/Downloads/*.torrent"
 source ~/.aliases
-alias is_on="ps aux | grep $@"
-
-#custom *nix functions
-echoerror(){ echo "$@" 1>&2; }
-
-#custom scripts
+source ~/.shell_funcs
 
 #turn off screensaver in ubuntu
 xset -dpms
@@ -143,6 +122,20 @@ xset -dpms
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-
+#=================== Run time management ====================#
+# node.js version manager
+export PATH=~/.npm/bin:$PATH
+export NPM_CONFIG_PREFIX=~/.npm
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Go version manager
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# ruby version manager
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+
+#=================== Run time management ====================#
+
+

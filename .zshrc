@@ -59,6 +59,11 @@ export LANG=en_US.UTF-8
 
 export EDITOR='vim'
 
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.aliases
+source ~/.shell_funcs
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -81,7 +86,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #=================== Run time management ====================#
 
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.aliases
-source ~/.shell_funcs
+
