@@ -1,5 +1,5 @@
 #custom settings for git
-alias show="nautilus $@"
+alias show="xdg-open $@"
 alias gits="git status"
 alias gitd="git diff $@"
 alias gitc="git commit $@"

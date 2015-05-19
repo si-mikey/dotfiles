@@ -34,6 +34,9 @@ endif
 "pathogen infection, before filetype plugin indent on
 execute pathogen#infect()
 
+"jshint tool
+set runtimepath+=~/.vim/bundle/jshint2.vim
+
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
 filetype plugin indent on
