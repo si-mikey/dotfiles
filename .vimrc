@@ -61,7 +61,7 @@ set noswapfile		" no swaps
 set nobackup		"
 set nowritebackup	"
 set backspace=2		" backspace delete
-" set colorcolumn=80 
+set colorcolumn=80 
 set t_Co=256 "256 colors in terminal
 
 "settings i like
@@ -81,6 +81,7 @@ au BufNewFile,BufRead *.json set filetype=javascript
 nnoremap Q q
 nnoremap q <Nop>
 
+" fold javascript 
 au FileType javascript call JavaScriptFold()
 
 
