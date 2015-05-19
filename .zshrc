@@ -47,6 +47,22 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+
+# Now we can pipe to multiple outputs!
+setopt MULTIOS
+
+# This makes cd=pushd
+setopt AUTO_PUSHD
+
+# If we have a glob this will expand it
+setopt GLOB_COMPLETE
+setopt PUSHD_MINUS
+
+# deleting everything? Better wait.
+setopt RM_STAR_WAIT
+
+
+
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -86,5 +102,3 @@ if ! hash rock 2>/dev/null; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 fi
 #=================== Run time management ====================#
-
-
