@@ -25,7 +25,15 @@ function mandelbrot {
 }
 
 
+function po {
+  popd $@
+}
+ 
+function pu {
+  pushd $@
+}
+
+
+
 
 echoerror(){ echo "$@" 1>&2; }
-
-
