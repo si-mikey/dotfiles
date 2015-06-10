@@ -80,6 +80,8 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliases
 source ~/.shell_funcs
 
+# source 
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -101,4 +103,8 @@ if ! hash rock 2>/dev/null; then
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 fi
+
+# java version manager
+[[ -s "$HOME/.jenv/jenv" ]] && pathmunge "$HOME/.jenv/bin"  
+
 #=================== Run time management ====================#
