@@ -96,7 +96,7 @@ export NVM_DIR=~/.nvm
 # Go version manager
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-if ! type rock 2>/dev/null; then
+if ! hash rock 2>/dev/null; then
   # ruby version manager
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 

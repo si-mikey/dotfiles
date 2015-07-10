@@ -30,7 +30,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-
 "pathogen infection, before filetype plugin indent on
 execute pathogen#infect()
 
@@ -41,10 +40,21 @@ set runtimepath+=~/.vim/bundle/jshint2.vim
 " according to the detected filetype.
 filetype plugin indent on
 
+
+" Vim
+let g:indentLine_color_term = 239
+
+"GVim
+let g:indentLine_color_gui = '#A4E57E'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+
 "code completion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
