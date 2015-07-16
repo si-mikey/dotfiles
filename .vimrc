@@ -57,6 +57,26 @@ let g:indentLine_char = '░'
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
+" JAVA
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+autocmd Filetype java map <leader>b :call javacomplete#GoToDefinition()<CR>
+
+" Need to set these paths
+"call javacomplete#AddClassPath('/home/user/.m2/repository/asm/asm/3.1/asm-3.1.jar')
+"call javacomplete#AddClassPath('/path/to/class/files')
+"call javacomplete#AddSourcePath('/path/to/source')
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" END JAVA
+
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
