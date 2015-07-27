@@ -19,4 +19,4 @@ alias me="cd $HOME"
 alias cls="clear"
 alias tunes="ncmpcpp"
 alias is_on="ps aux | grep $@"
-
+alias be="bundle exec $@"
