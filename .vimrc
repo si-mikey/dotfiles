@@ -56,6 +56,15 @@ let g:indentLine_char = '░'
 "code completion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " JAVA
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
@@ -94,6 +103,8 @@ set nowritebackup	"
 set backspace=2		" backspace delete
 set colorcolumn=80 
 set t_Co=256 "256 colors in terminal
+set list "show hidden chars
+set paste
 
 "settings i like
 set relativenumber 	"here be zero
