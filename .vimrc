@@ -107,6 +107,10 @@ nnoremap q <Nop>
 " fold javascript 
 au FileType javascript call JavaScriptFold()
 
+"ctrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+
 
 "Show motion for words:  
 "nnoremap <silent> w w:call g:Highw()<CR>:call g:HighW()<CR>  
