@@ -104,5 +104,5 @@ fi
 
 # java version manager
 [[ -s "$HOME/.jenv/jenv" ]] && pathmunge "$HOME/.jenv/bin"  
-
+eval "$(jenv init -)"
 #=================== Run time management ====================#
