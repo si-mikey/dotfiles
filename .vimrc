@@ -93,6 +93,9 @@ set tabstop=2
 set expandtab       "tabs to spaces
 set shiftwidth=2
 set foldmethod=syntax
+setlocal spell
+setlocal spell spelllang=en_us
+set complete+=kspell
 
 " auto detect rare file extensions
 au BufNewFile,BufRead *.jq set filetype=javascript
