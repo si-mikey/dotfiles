@@ -103,6 +103,6 @@ if ! hash rock 2>/dev/null; then
 fi
 
 # java version manager
-[[ -s "$HOME/.jenv/jenv" ]] && pathmunge "$HOME/.jenv/bin"  
+[[ -s "$HOME/.jenv/bin/jenv" ]] && pathmunge "$HOME/.jenv/bin"  
 eval "$(jenv init -)"
 #=================== Run time management ====================#
