@@ -23,6 +23,9 @@ Plugin 'ervandew/supertab'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'metakirby5/codi.vim'
+Plugin 'bcicen/vim-vice'
+Plugin 'junegunn/fzf.vim'
 
 """""""""""""" PLUGINS """""""""""""""""""""""
 
@@ -83,6 +86,8 @@ set foldmethod=syntax
 "setlocal spell
 "setlocal spell spelllang=en_us
 "set complete+=kspell
+colorscheme vice
+set rtp+=~/.fzf
 
 " auto detect rare file extensions
 au BufNewFile,BufRead *.js set filetype=javascript
