@@ -8,34 +8,27 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
-
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'SirVer/ultisnips'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'metakirby5/codi.vim'
 Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
+Plugin 'SirVer/UltiSnips'
 
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-filetype plugin indent on
-filetype plugin on
 
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -119,16 +112,27 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 
 let g:EclimCompletionMethod = 'omnifunc'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-let g:SuperTabDefaultCompletionType = 'context'
-"let g:UltiSnipsListSnippets = ""
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " power line extenson
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:bufferline_echo = 0
+
+
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+filetype plugin indent on
+filetype plugin on
+
+
