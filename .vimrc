@@ -24,6 +24,7 @@ Plugin 'metakirby5/codi.vim'
 Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/UltiSnips'
+Plugin 'scrooloose/syntastic'
 
 """""""""""""" PLUGINS """""""""""""""""""""""
 
@@ -117,6 +118,7 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_autoclose_preview_window_after_completion=1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -134,5 +136,15 @@ let g:bufferline_echo = 0
 " according to the detected filetype.
 filetype plugin indent on
 filetype plugin on
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 

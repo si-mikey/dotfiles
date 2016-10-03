@@ -47,7 +47,6 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-
 # Now we can pipe to multiple outputs!
 setopt MULTIOS
 
@@ -77,8 +76,26 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliases
 source ~/.shell_funcs
-
+# eclim dir
+export ECLIM_HOME=/Users/luislopez/code/java/eclipse.app/Contents/Eclipse/plugins/org.eclim_2.5.0/bin
+# workmarket stuff
+export WM_HOME=/Users/luislopez/code/workMarket/
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home'
+export MAVEN_OPTS="-server -Xms1G -Xmx2G -XX:MaxPermSize=1G"
+export JRUBY_OPTS="--server -J-Xms1G -J-Xmx2G -J-XX:+CMSClassUnloadingEnabled -J-XX:+UseConcMarkSweepGC -J-XX:MaxPermSize=1G"
 # source 
+
+# Gradle bin
+PATH=$PATH:~/code/java/gradle-2.13/bin
+
+
+# ==== Docker ===== #
+export DOCKER_HOST=tcp://127.0.0.1
+export DOCKER_CERT_PATH=/Users/luislopez/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+# ==== Docker ====== #
+
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,21 +105,22 @@ source ~/.shell_funcs
 
 #=================== Run time management ====================#
 # node.js version manager
-export PATH=~/.npm/bin:$PATH
-export NPM_CONFIG_PREFIX=~/.npm
+export PATH=$PATH:~/.npm/bin
+#export NPM_CONFIG_PREFIX=~/.npm
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Go version manager
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-if ! hash rock 2>/dev/null; then
-  # ruby version manager
-  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-fi
+# ruby version manager
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # java version manager
-[[ -s "$HOME/.jenv/bin/jenv" ]] && pathmunge "$HOME/.jenv/bin"  
-eval "$(jenv init -)"
 #=================== Run time management ====================#
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=$PATH:~/bin/
+

@@ -117,26 +117,25 @@ source ~/.aliases
 source ~/.shell_funcs
 
 #turn off screensaver in ubuntu
-xset -dpms
+[[ $(uname -a) =~ "Linux" ]] && xset -dpms
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
+export WM_HOME=~/code/workMarket
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home'
+export MAVEN_OPTS="-server -Xms1G -Xmx2G -XX:MaxPermSize=1G"
+export JRUBY_OPTS="--server -J-Xms1G -J-Xmx2G -J-XX:+CMSClassUnloadingEnabled -J-XX:+UseConcMarkSweepGC -J-XX:MaxPermSize=1G"
 #=================== Run time management ====================#
 # node.js version manager
-export PATH=~/.npm/bin:$PATH
-export NPM_CONFIG_PREFIX=~/.npm
+export PATH=$PATH:~/.npm/bin
+unset NPM_CONFIG_PREFIX
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Go version manager
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+#[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-if ! hash rock 2>/dev/null; then
   # ruby version manager
-  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-fi
 #=================== Run time management ====================#
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
