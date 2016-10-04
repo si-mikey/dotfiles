@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-cucumber'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
@@ -146,5 +147,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Syntastic ignore cucumber undefined warnings
+let g:syntastic_quiet_messages = {
+  \ "!level":  "warnings",
+  \ "type":    "syntax",
+  \ "regex":   'Cucumber:\:\Undefined',
+  \ "file:p":  ['\.feature'] }
+
+
+
 
 
