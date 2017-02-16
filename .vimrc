@@ -8,7 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-cucumber'
 Plugin 'Yggdroot/indentLine'
@@ -20,12 +20,15 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'metakirby5/codi.vim'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/UltiSnips'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'mileszs/ack.vim'
+Plugin 'maralla/completor.vim'
+Plugin 'w0rp/ale'
+Plugin 'heavenshell/vim-jsdoc'
 
 """""""""""""" PLUGINS """""""""""""""""""""""
 
@@ -81,7 +84,7 @@ set foldmethod=syntax
 "setlocal spell
 "setlocal spell spelllang=en_us
 "set complete+=kspell
-colorscheme vice
+"colorscheme vice
 set rtp+=~/.fzf
 
 " auto detect rare file extensions
@@ -113,18 +116,18 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 
-let g:EclimCompletionMethod = 'omnifunc'
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_autoclose_preview_window_after_completion=1
-
+"let g:EclimCompletionMethod = 'omnifunc'
+"
+"" make YCM compatible with UltiSnips (using supertab)
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_autoclose_preview_window_after_completion=1
+"
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " power line extenson
 let g:airline#extensions#tabline#enabled = 1
@@ -138,23 +141,43 @@ let g:bufferline_echo = 0
 filetype plugin indent on
 filetype plugin on
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"" Syntastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" Syntastic ignore cucumber undefined warnings
-let g:syntastic_quiet_messages = {
-  \ "!level":  "warnings",
-  \ "type":    "syntax",
-  \ "regex":   'Cucumber:\:\Undefined',
-  \ "file:p":  ['\.feature'] }
+"let g:syntastic_mode_map = { 'mode': 'active' }
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"" Syntastic ignore cucumber undefined warnings
+"let g:syntastic_quiet_messages = {
+"  \ "!level":  "warnings",
+"  \ "type":    "syntax",
+"  \ "regex":   'Cucumber:\:\Undefined',
+"  \ "file:p":  ['\.feature'] }
+"
+" Ack / Ag search 
+let g:ackprg = 'ag --vimgrep'
 
 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
+"let g:completor_auto_trigger = 0
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+
+" Async linter
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" JSDoc settings
+let g:jsdoc_allow_input_prompt = 1
+let g:jsdoc_input_description = 1
+let g:jsdoc_enable_es6 = 1
 
 
