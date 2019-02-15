@@ -1,14 +1,3 @@
-pathmunge () {
-  if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
-    if [ "$2" = "after" ] ; then
-      PATH=$PATH:$1
-    else
-      PATH=$1:$PATH
-    fi
-  fi
-}
-
-
 function mandelbrot {
    local lines columns colour a b p q i pnew
    ((columns=COLUMNS-1, lines=LINES-1, colour=0))
@@ -33,7 +22,11 @@ function pu {
   pushd $@
 }
 
-
-
-
 echoerror(){ echo "$@" 1>&2; }
+
+function path-add {
+  case ":$PATH:" in
+    *":$1:"*) :;; # already there
+    *) PATH="$1:$PATH";; # or PATH="$PATH:$1"
+  esac
+}
