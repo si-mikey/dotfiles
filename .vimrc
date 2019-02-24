@@ -1,5 +1,5 @@
 " not vi compatible
-set nocompatible 
+set nocompatible
 
 filetype off
 
@@ -8,7 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-cucumber'
 Plugin 'Yggdroot/indentLine'
@@ -18,18 +18,25 @@ Plugin 'bling/vim-bufferline'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
-Plugin 'Shutnik/jshint2.vim'
-Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'Shutnik/jshint2.vim'
+Plugin 'pangloss/vim-javascript'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/UltiSnips'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'mileszs/ack.vim'
-Plugin 'maralla/completor.vim'
+"Plugin 'maralla/completor.vim'
 Plugin 'w0rp/ale'
 Plugin 'heavenshell/vim-jsdoc'
-
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'myint/syntastic-extras'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'python-mode/python-mode'
+Plugin 'neoclide/coc.nvim'
+Plugin 'autozimu/LanguageClient-neovim'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -98,12 +105,10 @@ au BufNewFile,BufRead *.json set filetype=javascript
 nnoremap Q q
 nnoremap q <Nop>
 
-set runtimepath+=~/.vim/bundle/jshint2.vim
-au FileType javascript call JavaScriptFold()
 
 " Utilsnips settings
 set omnifunc=syntaxcomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -121,7 +126,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "" make YCM compatible with UltiSnips (using supertab)
 "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
 "let g:ycm_autoclose_preview_window_after_completion=1
 "
 " better key bindings for UltiSnipsExpandTrigger
@@ -142,38 +146,49 @@ filetype plugin indent on
 filetype plugin on
 
 "" Syntastic settings
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"let g:syntastic_mode_map = { 'mode': 'active' }
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1 
+let g:syntastic_check_on_wq = 1
 "" Syntastic ignore cucumber undefined warnings
 "let g:syntastic_quiet_messages = {
 "  \ "!level":  "warnings",
 "  \ "type":    "syntax",
 "  \ "regex":   'Cucumber:\:\Undefined',
 "  \ "file:p":  ['\.feature'] }
-"
+
+" language syntax checkers
+let g:syntastic_python_checkers = ['pyflakes_with_warnings']
+let g:syntastic_yaml_checkers = ['pyyaml']
+let g:syntastic_json_checkers = ['json_tool']
+let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_c_checkers = ['check']
+let g:syntastic_cpp_checkers = ['check']
+
 " Ack / Ag search 
 let g:ackprg = 'ag --vimgrep'
 
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-
-"let g:completor_auto_trigger = 0
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
 
 " Async linter
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
+let g:ale_fixers = {
+      \  'javascript': ['prettier', 'eslint', 'importjs'],
+      \  'python': ['flake8', 'pylint'],
+      \  'zsh': ['shell'],
+      \  'ruby': ['rubocop']}
+
 
 " JSDoc settings
 let g:jsdoc_allow_input_prompt = 1
@@ -181,3 +196,46 @@ let g:jsdoc_input_description = 1
 let g:jsdoc_enable_es6 = 1
 
 
+" Python-mode settings
+"let g:pymode_python = 'python3' 
+"
+" Language servers settings
+set runtimepath+=~/.vim/LanguageClient-neovim
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {}
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
+" <leader>ld to go to definition
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+" <leader>lh for type info under cursor
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+" <leader>lr to rename variable under cursor
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+
+let g:LanguageClient_serverCommands.python = ['pyls']
+
+" Map renaming in python
+autocmd FileType python nnoremap <buffer>
+  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+
+
+" Language specific support
+" JavaScript
+let g:javascript_plugin_jsdoc = 1
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
