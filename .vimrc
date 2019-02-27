@@ -93,6 +93,7 @@ set foldmethod=syntax
 "set complete+=kspell
 "colorscheme vice
 set rtp+=~/.fzf
+let NERDTreeShowHidden=1
 
 " auto detect rare file extensions
 au BufNewFile,BufRead *.js set filetype=javascript
