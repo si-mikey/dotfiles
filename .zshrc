@@ -100,12 +100,15 @@ fi
 [ -f ~/.shell_funcs ] && source ~/.shell_funcs
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+path-add "$HOME/.rvm/bin"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME:/home/mikey/.cargo/bin"
+path-add "$PYENV_ROOT/bin"
+path-add "$HOME/bin"
+path-add "$HOME:/home/mikey/.cargo/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# This dedupes path dirs
+typeset -aU path
