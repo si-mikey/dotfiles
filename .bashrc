@@ -103,6 +103,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.shell_funcs ]] && . ~/.shell_func
+# Turn off ubuntu screen saver
+xset -dpms
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
