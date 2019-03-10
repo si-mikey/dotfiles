@@ -22,7 +22,7 @@ function pu {
   pushd $@
 }
 
-echoerror(){ echo "$@" 1>&2; }
+function echoerror { echo "$@" 1>&2; }
 
 function path-add {
   case ":$PATH:" in
@@ -31,7 +31,7 @@ function path-add {
   esac
 }
 
-ix() {
+function ix {
   local opts
   local OPTIND
   [ -f "$HOME/.netrc" ] && opts='-n'
@@ -54,4 +54,8 @@ ix() {
       echo "^C to cancel, ^D to send."
   }
   curl $opts -F f:1='<-' $* ix.io/$id
+}
+
+function path {
+  echo $PATH | tr ":" "\n" | nl
 }
