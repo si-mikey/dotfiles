@@ -38,6 +38,9 @@ Plugin 'python-mode/python-mode'
 Plugin 'neoclide/coc.nvim'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mattn/emmet-vim'
+Plugin 'janko-m/vim-test'
+Plugin 'tpope/vim-dispatch'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -205,6 +208,13 @@ let g:ale_fixers = {
       \  'zsh': ['shell'],
       \  'ruby': ['rubocop']}
 
+" Vim-test settings
+"nmap <silent> t<C-n> :TestNearest<CR> 
+"nmap <silent> t<C-f> :TestFile<CR> 
+"nmap <silent> t<C-s> :TestSuite<CR> 
+"nmap <silent> t<C-l> :TestLast<CR> 
+"nmap <silent> t<C-g> :TestVisit<CR>
+let test#strategy = "dispatch"
 
 " JSDoc settings
 let g:jsdoc_allow_input_prompt = 1
