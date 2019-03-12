@@ -98,6 +98,7 @@ set foldmethod=syntax
 "colorscheme vice
 set rtp+=~/.fzf
 let NERDTreeShowHidden=1
+set splitright
 
 " auto detect rare file extensions
 au BufNewFile,BufRead *.js set filetype=javascript
