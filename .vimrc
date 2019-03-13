@@ -41,6 +41,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mattn/emmet-vim'
 Plugin 'janko-m/vim-test'
 Plugin 'tpope/vim-dispatch'
+Plugin 'moll/vim-node'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
