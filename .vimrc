@@ -1,6 +1,5 @@
-" not vi compatible
 set nocompatible
-
+set encoding=UTF-8
 filetype off
 
 " init vundle
@@ -21,7 +20,7 @@ Plugin 'honza/vim-snippets'
 "Plugin 'Shutnik/jshint2.vim'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'bcicen/vim-vice'
+"Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
 Plugin 'SirVer/UltiSnips'
 Plugin 'scrooloose/syntastic'
@@ -63,7 +62,7 @@ endif
 
 " Vim Indent rules
 let g:indentLine_color_term = 239
-let g:indentLine_char = '░'
+let g:indentLine_char = '┆'
 let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
@@ -71,27 +70,31 @@ let g:indentLine_color_dark = 1 " (default: 2)
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
-set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
-set ruler		" show the cursor coords
-set noswapfile		" no swaps
-set nobackup		"
-set nowritebackup	"
-set backspace=2		" backspace delete
+set showcmd			"Show (partial) command in status line.
+set showmatch		"Show matching brackets.
+set ignorecase		"Do case insensitive matching
+set smartcase		"Do smart case matching
+set incsearch		"Incremental search
+set autowrite		"Automatically save before commands like :next and :make
+set hidden			"Hide buffers when they are abandoned
+set mouse=a			"Enable mouse usage (all modes)
+set ruler			"show the cursor coords
+set noswapfile		"no swaps
+set nobackup
+set nowritebackup
+set backspace=indent,eol,start
 set colorcolumn=80 
-set t_Co=256 "256 colors in terminal
-set list "show hidden chars
+set t_Co=256		"256 colors in terminal
+set list			"show hidden chars
+set listchars=eol:⏎,tab:⇥·,trail:␠,nbsp:⎵
 "set paste
-set relativenumber 	"here be zero
-set tabstop=2
-set expandtab       "tabs to spaces
-set shiftwidth=2
+set relativenumber	"here be zero
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab		"tabs to spaces
+
+
 set foldmethod=syntax
 "setlocal spell
 "setlocal spell spelllang=en_us
