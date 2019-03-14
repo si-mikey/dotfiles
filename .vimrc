@@ -41,6 +41,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'janko-m/vim-test'
 Plugin 'tpope/vim-dispatch'
 Plugin 'moll/vim-node'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'rhysd/git-messenger.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -93,8 +95,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab		"tabs to spaces
-
-
 set foldmethod=syntax
 "setlocal spell
 "setlocal spell spelllang=en_us
@@ -110,6 +110,8 @@ au BufNewFile,BufRead *.jq set filetype=javascript
 au BufNewFile,BufRead *.jade set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
 
+" map \gm for git blamer
+nmap <Leader>gm <Plug>(git-messenger)
 
 " Stop from recording unexpectedly so remap q to Q
 nnoremap Q q
