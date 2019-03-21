@@ -1,5 +1,5 @@
-set nocompatible
 set encoding=UTF-8
+set nocompatible
 filetype off
 
 " init vundle
@@ -43,6 +43,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'moll/vim-node'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'rhysd/git-messenger.vim'
+Plugin 'lervag/vimtex'
+Plugin 'mhinz/vim-startify'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -53,8 +55,6 @@ if has("syntax")
   syntax on
 endif
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
 set background=dark
 
 " jump to the last position when reopening a file
@@ -117,6 +117,12 @@ nmap <Leader>gm <Plug>(git-messenger)
 nnoremap Q q
 nnoremap q <Nop>
 
+" laText settings
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " Utilsnips settings
 set omnifunc=syntaxcomplete#Complete
@@ -134,8 +140,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 
 "let g:EclimCompletionMethod = 'omnifunc'
-"
-"" make YCM compatible with UltiSnips (using supertab)
+" make YCM compatible with UltiSnips (using supertab)
 "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 "let g:ycm_autoclose_preview_window_after_completion=1
@@ -144,6 +149,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "let g:UltiSnipsExpandTrigger = "<tab>"
 "let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsListSnippets = "<C-a>"
+"inoremap <C-a> :call UltiSnips#ListSnippets()<CR>
 
 " power line extenson
 let g:airline#extensions#tabline#enabled = 1
