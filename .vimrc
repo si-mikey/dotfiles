@@ -103,6 +103,7 @@ set foldmethod=syntax
 set rtp+=~/.fzf
 let NERDTreeShowHidden=1
 set splitright
+"set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 " auto detect rare file extensions
 au BufNewFile,BufRead *.js set filetype=javascript
@@ -183,11 +184,11 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_mode_map				 = { 'mode': 'active' }
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1 
-let g:syntastic_check_on_wq = 1
+let g:syntastic_auto_loc_list			 = 1
+let g:syntastic_check_on_open			 = 1 
+let g:syntastic_check_on_wq				 = 1
 "" Syntastic ignore cucumber undefined warnings
 "let g:syntastic_quiet_messages = {
 "  \ "!level":  "warnings",
@@ -197,11 +198,11 @@ let g:syntastic_check_on_wq = 1
 
 " language syntax checkers
 let g:syntastic_python_checkers = ['pyflakes_with_warnings']
-let g:syntastic_yaml_checkers = ['pyyaml']
-let g:syntastic_json_checkers = ['json_tool']
-let g:syntastic_make_checkers = ['gnumake']
-let g:syntastic_c_checkers = ['check']
-let g:syntastic_cpp_checkers = ['check']
+let g:syntastic_yaml_checkers	= ['pyyaml']
+let g:syntastic_json_checkers	= ['json_tool']
+let g:syntastic_make_checkers	= ['gnumake']
+let g:syntastic_c_checkers		= ['check']
+let g:syntastic_cpp_checkers	= ['check']
 
 " Ack / Ag search 
 let g:ackprg = 'ag --vimgrep'
@@ -211,11 +212,11 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " Async linter
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+let g:ale_completion_enabled	= 1
+let g:ale_lint_on_save			= 1
+let g:ale_lint_on_text_changed	= 0
 " if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter			= 0
 let g:ale_fixers = {
       \  'javascript': ['prettier', 'eslint', 'importjs'],
       \  'python': ['flake8', 'pylint'],
@@ -231,9 +232,9 @@ let g:ale_fixers = {
 let test#strategy = "dispatch"
 
 " JSDoc settings
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_input_description = 1
-let g:jsdoc_enable_es6 = 1
+let g:jsdoc_allow_input_prompt	= 1
+let g:jsdoc_input_description	= 1
+let g:jsdoc_enable_es6			= 1
 
 
 " Python-mode settings
