@@ -1,6 +1,7 @@
 set encoding=UTF-8
 set nocompatible
 filetype off
+let g:ale_disable_lsp = 1
 
 " init vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,41 +10,42 @@ Plugin 'VundleVim/Vundle.vim'
 """""""""""""" PLUGINS """""""""""""""""""""""
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-cucumber'
+"Plugin 'tpope/vim-cucumber'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
 "Plugin 'Shutnik/jshint2.vim'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'bcicen/vim-vice'
 Plugin 'junegunn/fzf.vim'
-Plugin 'SirVer/UltiSnips'
-Plugin 'scrooloose/syntastic'
+"Plugin 'SirVer/UltiSnips'
+Plugin 'honza/vim-snippets'
+"Plugin 'scrooloose/syntastic'
 Plugin 'mileszs/ack.vim'
 "Plugin 'maralla/completor.vim'
+"  async linting
 Plugin 'w0rp/ale'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/yajs.vim'
 Plugin 'othree/es.next.syntax.vim'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'myint/syntastic-extras'
+"Plugin 'ternjs/tern_for_vim'
+"Plugin 'myint/syntastic-extras'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'python-mode/python-mode'
 Plugin 'neoclide/coc.nvim'
-Plugin 'autozimu/LanguageClient-neovim'
+"Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mattn/emmet-vim'
-Plugin 'janko-m/vim-test'
-Plugin 'tpope/vim-dispatch'
-Plugin 'moll/vim-node'
+"Plugin 'janko-m/vim-test'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'moll/vim-node'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'rhysd/git-messenger.vim'
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 Plugin 'mhinz/vim-startify'
 """""""""""""" PLUGINS """""""""""""""""""""""
 
@@ -85,7 +87,7 @@ set noswapfile		"no swaps
 set nobackup
 set nowritebackup
 set backspace=indent,eol,start
-set colorcolumn=80 
+" set colorcolumn=120 
 set t_Co=256		"256 colors in terminal
 set list			"show hidden chars
 set listchars=eol:⏎,tab:⇥·,trail:␠,nbsp:⎵
@@ -119,11 +121,11 @@ nnoremap Q q
 nnoremap q <Nop>
 
 " laText settings
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
+""let g:tex_flavor='latex'
+""let g:vimtex_view_method='zathura'
+""let g:vimtex_quickfix_mode=0
+""set conceallevel=1
+""let g:tex_conceal='abdmg'
 
 " Utilsnips settings
 set omnifunc=syntaxcomplete#Complete
@@ -150,7 +152,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "let g:UltiSnipsExpandTrigger = "<tab>"
 "let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsListSnippets = "<C-a>"
+"let g:UltiSnipsListSnippets = "<C-a>"
 "inoremap <C-a> :call UltiSnips#ListSnippets()<CR>
 
 " power line extenson
@@ -184,42 +186,42 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-let g:syntastic_mode_map				 = { 'mode': 'active' }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list			 = 1
-let g:syntastic_check_on_open			 = 1 
-let g:syntastic_check_on_wq				 = 1
+"let g:syntastic_mode_map				 = { 'mode': 'active' }
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list			 = 1
+"let g:syntastic_check_on_open			 = 1 
+"let g:syntastic_check_on_wq				 = 1
 "" Syntastic ignore cucumber undefined warnings
 "let g:syntastic_quiet_messages = {
 "  \ "!level":  "warnings",
 "  \ "type":    "syntax",
 "  \ "regex":   'Cucumber:\:\Undefined',
 "  \ "file:p":  ['\.feature'] }
-
-" language syntax checkers
-let g:syntastic_python_checkers = ['pyflakes_with_warnings']
-let g:syntastic_yaml_checkers	= ['pyyaml']
-let g:syntastic_json_checkers	= ['json_tool']
-let g:syntastic_make_checkers	= ['gnumake']
-let g:syntastic_c_checkers		= ['check']
-let g:syntastic_cpp_checkers	= ['check']
+"
+"" language syntax checkers
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_yaml_checkers	= ['pyyaml']
+"let g:syntastic_json_checkers	= ['json_tool']
+"let g:syntastic_make_checkers	= ['gnumake']
+"let g:syntastic_c_checkers		= ['check']
+"let g:syntastic_cpp_checkers	= ['check']
 
 " Ack / Ag search 
 let g:ackprg = 'ag --vimgrep'
 
 " SuperTab settings
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " Async linter
-let g:ale_completion_enabled	= 1
+let g:ale_completion_enabled	= 0 
 let g:ale_lint_on_save			= 1
 let g:ale_lint_on_text_changed	= 0
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter			= 0
 let g:ale_fixers = {
-      \  'javascript': ['prettier', 'eslint', 'importjs'],
-      \  'python': ['flake8', 'pylint'],
+      \  'javascript': ['eslint', 'prettier', 'importjs'],
+      \  'python': ['pylint'],
       \  'zsh': ['shell'],
       \  'ruby': ['rubocop']}
 
@@ -229,7 +231,7 @@ let g:ale_fixers = {
 "nmap <silent> t<C-s> :TestSuite<CR> 
 "nmap <silent> t<C-l> :TestLast<CR> 
 "nmap <silent> t<C-g> :TestVisit<CR>
-let test#strategy = "dispatch"
+"let test#strategy = "dispatch"
 
 " JSDoc settings
 let g:jsdoc_allow_input_prompt	= 1
@@ -241,36 +243,36 @@ let g:jsdoc_enable_es6			= 1
 "let g:pymode_python = 'python3' 
 "
 " Language servers settings
-set runtimepath+=~/.vim/LanguageClient-neovim
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
+""set runtimepath+=~/.vim/LanguageClient-neovim
+""" Automatically start language servers.
+""let g:LanguageClient_autoStart = 1
 
 " Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {}
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  " Use LanguageServer for omnifunc completion
-  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-else
-  echo "javascript-typescript-stdio not installed!\n"
-  :cq
-endif
+" let g:LanguageClient_serverCommands = {}
+" if executable('javascript-typescript-stdio')
+"  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"  " Use LanguageServer for omnifunc completion
+"  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+" else
+"  echo "javascript-typescript-stdio not installed!\n"
+"  :cq
+" endif
 
-" <leader>ld to go to definition
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-" <leader>lh for type info under cursor
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-" <leader>lr to rename variable under cursor
-autocmd FileType javascript nnoremap <buffer>
-  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-
-let g:LanguageClient_serverCommands.python = ['pyls']
+"" <leader>ld to go to definition
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+"" <leader>lh for type info under cursor
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+"" <leader>lr to rename variable under cursor
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+"
+"let g:LanguageClient_serverCommands.python = ['pyls']
 
 " Map renaming in python
-autocmd FileType python nnoremap <buffer>
-  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+"autocmd FileType python nnoremap <buffer>
+"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
 
 
 " Language specific support
@@ -283,3 +285,5 @@ augroup END
 
 " format JSON in opened file
 nmap =j :%!python -m json.tool<CR>
+
+:hi Pmenu ctermbg=gray guibg=gray
