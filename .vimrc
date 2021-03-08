@@ -11,7 +11,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'tpope/vim-cucumber'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
+Plugin 'thaerkh/vim-indentguides'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
@@ -65,38 +66,44 @@ if has("autocmd")
 endif
 
 " Vim Indent rules
-let g:indentLine_color_term = 239
-let g:indentLine_char = '┆'
-let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
+""let g:indentLine_color_term = 239
+"""let g:indentLine_char = '┆'
+""let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+""let g:indentLine_color_gui = '#A4E57E'
+""let g:indentLine_color_tty_light = 7 " (default: 4)
+""let g:indentLine_color_dark = 2 " (default: 2)
+""let g:indentLine_concealcursor = 'inc'
+""let g:indentLine_conceallevel = 2
+
+let g:indentguides_spacechar = '░'
+let g:indentguides_tabchar = '▓'
 
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd			"Show (partial) command in status line.
-set showmatch		"Show matching brackets.
-set ignorecase		"Do case insensitive matching
-set smartcase		"Do smart case matching
-set incsearch		"Incremental search
-set autowrite		"Automatically save before commands like :next and :make
-set hidden			"Hide buffers when they are abandoned
-set mouse=a			"Enable mouse usage (all modes)
-set ruler			"show the cursor coords
-set noswapfile		"no swaps
+set showcmd         "Show (partial) command in status line.
+set showmatch       "Show matching brackets.
+set ignorecase      "Do case insensitive matching
+set smartcase       "Do smart case matching
+set incsearch       "Incremental search
+set autowrite       "Automatically save before commands like :next and :make
+set hidden          "Hide buffers when they are abandoned
+set mouse=a         "Enable mouse usage (all modes)
+set ruler           "show the cursor coords
+set noswapfile      "no swaps
 set nobackup
 set nowritebackup
 set backspace=indent,eol,start
 " set colorcolumn=120 
-set t_Co=256		"256 colors in terminal
-set list			"show hidden chars
-set listchars=eol:⏎,tab:⇥·,trail:␠,nbsp:⎵
+set t_Co=256        "256 colors in terminal
+"set list           "show hidden chars
+""set listchars=eol:⏎,tab:⇥·,trail:␠,nbsp:⎵
 "set paste
-set relativenumber	"here be zero
+set relativenumber  "here be zero
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab		"tabs to spaces
+set expandtab       "tabs to spaces
 set foldmethod=syntax
 "setlocal spell
 "setlocal spell spelllang=en_us
@@ -168,9 +175,9 @@ filetype plugin indent on
 filetype plugin on
 
 "" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
 
 
 " Multiple visual selection 
@@ -186,11 +193,11 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-"let g:syntastic_mode_map				 = { 'mode': 'active' }
+"let g:syntastic_mode_map                = { 'mode': 'active' }
 "let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list			 = 1
-"let g:syntastic_check_on_open			 = 1 
-"let g:syntastic_check_on_wq				 = 1
+"let g:syntastic_auto_loc_list           = 1
+"let g:syntastic_check_on_open           = 1 
+"let g:syntastic_check_on_wq                 = 1
 "" Syntastic ignore cucumber undefined warnings
 "let g:syntastic_quiet_messages = {
 "  \ "!level":  "warnings",
@@ -200,11 +207,11 @@ let g:multi_cursor_quit_key            = '<Esc>'
 "
 "" language syntax checkers
 "let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_yaml_checkers	= ['pyyaml']
-"let g:syntastic_json_checkers	= ['json_tool']
-"let g:syntastic_make_checkers	= ['gnumake']
-"let g:syntastic_c_checkers		= ['check']
-"let g:syntastic_cpp_checkers	= ['check']
+"let g:syntastic_yaml_checkers  = ['pyyaml']
+"let g:syntastic_json_checkers  = ['json_tool']
+"let g:syntastic_make_checkers  = ['gnumake']
+"let g:syntastic_c_checkers     = ['check']
+"let g:syntastic_cpp_checkers   = ['check']
 
 " Ack / Ag search 
 let g:ackprg = 'ag --vimgrep'
@@ -214,11 +221,11 @@ let g:ackprg = 'ag --vimgrep'
 let g:SuperTabDefaultCompletionType = "context"
 
 " Async linter
-let g:ale_completion_enabled	= 0 
-let g:ale_lint_on_save			= 1
-let g:ale_lint_on_text_changed	= 0
+let g:ale_completion_enabled    = 0 
+let g:ale_lint_on_save          = 1
+let g:ale_lint_on_text_changed  = 0
 " if you don't want linters to run on opening a file
-let g:ale_lint_on_enter			= 0
+let g:ale_lint_on_enter         = 0
 let g:ale_fixers = {
       \  'javascript': ['eslint', 'prettier', 'importjs'],
       \  'python': ['pylint'],
@@ -234,9 +241,9 @@ let g:ale_fixers = {
 "let test#strategy = "dispatch"
 
 " JSDoc settings
-let g:jsdoc_allow_input_prompt	= 1
-let g:jsdoc_input_description	= 1
-let g:jsdoc_enable_es6			= 1
+let g:jsdoc_allow_input_prompt  = 1
+let g:jsdoc_input_description   = 1
+let g:jsdoc_enable_es6          = 1
 
 
 " Python-mode settings
