@@ -1,14 +1,21 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/mikey/.oh-my-zsh"
+  export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,14 +104,24 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.aliases ] && source ~/.aliases
-[ -f ~/.shell_funcs ] && source ~/.shell_funcs
+[ -f ~/.shell_funcs.sh ] && source ~/.shell_funcs.sh
+[ -f ~/code/.env.sh ] && source ~/code/.env.sh
+
+export GOBIN="/Users/llopez/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 path-add "$HOME/.rvm/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 path-add "$PYENV_ROOT/bin"
 path-add "$HOME/bin"
-path-add "$HOME:/home/mikey/.cargo/bin"
+#path-add "$HOME:/home/llopez/.cargo/bin"
+path-add "/Applications/Firefox.app/Contents/MacOS"
+path-add "/Users/llopez/code/drivers"
+path-add "/Users/llopez/.harold/bin"
+path-add "/Users/llopez/.cargo/bin"
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -112,3 +129,21 @@ export NVM_DIR="$HOME/.nvm"
 
 # This dedupes path dirs
 typeset -aU path
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+#opploans artifactory details
+source ~/.oppfi_artifactory.sh
+
+# increase open file limit
+ulimit -n 10240
+
+nvm use 20 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+source ~/.cle-security-defaults.sh
+export PATH="$HOME/.local/bin:$PATH"
